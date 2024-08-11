@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginRequest } from '../model/login-request';
 
@@ -11,7 +11,13 @@ export class MasterService {
   constructor(private http:HttpClient) { }
   login(loginRequest:LoginRequest)
   {
+    // let headers = new HttpHeaders()
+    // // .set('Authorization', 'Bearer ' + token)
+    // .set('Content-Type', 'application/json')
+    // .set("Access-Control-Allow-Origin","*")
+    // .set("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT")
+    // .set("Access-Control-Allow-Headers", "Content-Type,X-Auth_Token,Origin,Authorization");
     debugger;
-   return this.http.post("https://freeapi.miniprojectideas.com/api/Tickets/login",loginRequest);
+   return this.http.post("/api/Tickets/login",loginRequest);
   }
 }
