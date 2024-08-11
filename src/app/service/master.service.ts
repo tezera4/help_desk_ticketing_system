@@ -20,4 +20,10 @@ export class MasterService {
     debugger;
    return this.http.post("/api/Tickets/login",loginRequest);
   }
+  
+
+  getDepartment()
+  {
+    return this.http.get("/api/Tickets/GetDepartments");
+  }
 }
