@@ -24,6 +24,7 @@ export class MasterService {
 
   getDepartment()
   {
+    //department
     return this.http.get("/api/Tickets/GetDepartments");
   }
 }
