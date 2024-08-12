@@ -4,5 +4,12 @@
         "secure":false,
         "logLevel":"debug",
         "changeOrigin":true
+    },
+    
+    "/api/TicketsNew/*":{
+        "target":"https://freeapi.miniprojectideas.com",
+        "secure":false,
+        "logLevel":"debug",
+        "changeOrigin":true
     }
 }

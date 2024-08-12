@@ -4,6 +4,7 @@ import { LayoutComponent } from './pages/layout/layout.component';
 import { DepartmentComponent } from './pages/department/department.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ParentcategoryComponent } from './pages/parentcategory/parentcategory.component';
 
 export const routes: Routes = [
     {
@@ -24,6 +25,12 @@ export const routes: Routes = [
             {
                 path:"department",
                 component:DepartmentComponent,
+
+
+            },
+            {
+                path:"parent-category",
+                component:ParentcategoryComponent,
 
 
             },

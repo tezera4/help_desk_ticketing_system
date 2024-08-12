@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-8">
         <div class="card">
-            <div class="card-header bg-success" >
+            <div class="card-header bg-success">
                 Department List
             </div>
             <div class="card-body">
@@ -9,21 +9,29 @@
                     <div class="col-12">
                         <table class="table table-bordered">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>Sr no</th>
                                     <th>Department Name</th>
                                     <th>created date</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @for (item of getAllDept.data; track $index) {
-                                    <tr>
-                                        <td>{{$index+1}}</td>
-                                        <td>{{item.deptName}}</td>
-                                        <td>{{item.createdDate|date:'dd-MMM-yyyy'}}</td>
-                                    </tr>
+                                <tr>
+                                    <td>{{$index+1}}</td>
+                                    <td>{{item.deptName}}</td>
+                                    <td>{{item.createdDate|date:'dd-MMM-yyyy'}}</td>
+                                    <td class="text-center">
+                                        
+                                        <button type="button" class="btn btn-primary"
+                                            (click)="OnUpdate(item)">Update</button>
+                                        <button type="button" class="btn btn-danger mx-2"
+                                            (click)="onDeleteDepartment(item.deptId)">Delete</button>
+                                    </td>
+                                </tr>
                                 }
-                                
+
                             </tbody>
                         </table>
                     </div>
@@ -33,27 +41,37 @@
     </div>
     <div class="col-4">
         <div class="card">
-            <div class="card-header bg-success" >
+            <div class="card-header bg-success">
                 New Department
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
                         <label for="">Department Name</label>
-                        <input type="text" class="form-control"/>
+                        <input type="text" name="deptName" [(ngModel)]="createDepartment.deptName"
+                            class="form-control" />
                     </div>
+                    @if(createDepartment.deptId==0){
                     <div class="col-12">
                         <label for="">Date of Creation</label>
-                        <input type="date" class="form-control"/>
+                        <input type="date" name="date" [(ngModel)]="createDepartment.createdDate"
+                            class="form-control" />
                     </div>
+                    }
+
                 </div>
                 <div class="row pt-3">
+                    
+                   
                     <div class="col-6">
-                        <button type="button" class="btn btn-secondary text-center">Reset</button>
-
-                    </div>
-                    <div class="col-6">
-                        <button type="button" class="btn btn-success text-center">Save</button>
+                        @if (createDepartment.deptId==0) {
+                            <button type="button" class="btn btn-success text-center"
+                            (click)="onCreateDepartment()">Save</button>
+                        }@else {
+                            <button type="button" class="btn btn-success text-center"
+                            (click)="UpdateDepartment()">Update Department</button> 
+                        }
+                      
                     </div>
                 </div>
             </div>
