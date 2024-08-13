@@ -57,7 +57,7 @@
                 <div class="row">
                     <div class="col-12">
                         <label for="">Department Name</label>
-                        <select [(ngModel)]="createCategory.deptId">
+                        <select [(ngModel)]="createCategory.deptId" class="form-select">
                             <option value="">Select Department</option>
                             @for (item of getAllDept.data; track $index) {
                                 <option value={{item.deptId}}>{{item.deptName}}</option>

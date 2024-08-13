@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { LoginRequest } from '../model/login-request';
 import { CreateDepartment } from '../model/create-department';
 import { GetAllParentCategory } from '../model/get-all-parent-category';
+import { CreateCategory } from '../model/create-category';
+import { CreateChildCategoryModel } from '../model/create-child-category-model';
+import { CreateEmployeeModel } from '../model/create-employee-model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,45 +30,94 @@ export class MasterService {
   getDepartment()
   {
     //department
-    return this.http.get("/api/Tickets/GetDepartments");
+    return this.http.get("/api/TicketsNew/GetDepartments");
   }
   createDepartment(createDepartment:CreateDepartment)
   {
     debugger;
-    return this.http.post("/api/Tickets/CreateDepartment",createDepartment);
+    return this.http.post("/api/TicketsNew/CreateDepartment",createDepartment);
   }
   deleteDepartment(deptId:number)
   {
     debugger;
-    return this.http.delete("/api/Tickets/DeleteDepartment?id="+deptId);
+    return this.http.delete("/api/TicketsNew/DeleteDepartment?id="+deptId);
   }
 
   updateDepartment(updateDepartment:any)
   {
    
-    return this.http.put("/api/Tickets/UpdateDepartment",updateDepartment);
+    return this.http.put("/api/TicketsNew/UpdateDepartment",updateDepartment);
   }
 
   getParentCategory()
   {
     debugger;
-    //department
+   
     return this.http.get("/api/TicketsNew/GetParentCategory");
   }
-  createParentCategory(createParentCategory:GetAllParentCategory)
+  createParentCategory(createParentCategory:CreateCategory)
   {
     debugger;
-    return this.http.post("/api/Tickets/CreateDepartment",createParentCategory);
+    return this.http.post("/api/TicketsNew/createParentCategory",createParentCategory);
   }
-  deleteParentCategory(deptId:number)
+  deleteParentCategory(categoryId:number)
   {
     debugger;
-    return this.http.delete("/api/Tickets/DeleteParentCategory?id="+deptId);
+    return this.http.delete("/api/TicketsNew/DeleteParentCategory?id="+categoryId);
   }
-
+//update category is not implemented
   updateParentCategory(updateParentCategory:any)
   {
    
-    return this.http.put("/api/Tickets/UpdateParentCategory",updateParentCategory);
+    return this.http.put("/api/TicketsNew/UpdateParentCategory",updateParentCategory);
+  }
+
+  //childparentCategory
+
+  getAllChildCategory()
+  {
+    debugger;
+    //department
+    return this.http.get("/api/TicketsNew/GetChildCategory");
+  }
+  createChildCategory(createChildCategoryModel:CreateChildCategoryModel)
+  {
+    debugger;
+    return this.http.post("/api/TicketsNew/createChildCategory",createChildCategoryModel);
+  }
+  deleteChildCategory(childCategoryId:number)
+  {
+    debugger;
+    return this.http.delete("/api/TicketsNew/DeleteChildCategory?id="+childCategoryId);
+  }
+//update category is not implemented
+  updateChildCategory(updateChildCategory:any)
+  {
+   
+    return this.http.put("/api/TicketsNew/UpdateChildCategory",updateChildCategory);
+  }
+  //employee
+
+  getAllEmployees()
+  {
+    debugger;
+    //department
+    return this.http.get("/api/TicketsNew/GetEmployees");
+  }
+  createEmployee(createEmployeeModel:CreateEmployeeModel)
+  {
+    debugger;
+    return this.http.post("/api/TicketsNew/CreateEmployee",createEmployeeModel);
+  }
+  deleteEmployee(employeeId:number)
+  {
+    debugger;
+    return this.http.delete("/api/TicketsNew/DeleteEmployee?id="+employeeId);
+  }
+//update category is not implemented
+  updateEmployee(updateEmployee:any)
+  {
+   
+    return this.http.put("/api/TicketsNew/UpdateEmployee",updateEmployee);
   }
 }

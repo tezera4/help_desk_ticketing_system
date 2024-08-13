@@ -85,7 +85,7 @@ export class ParentcategoryComponent implements OnInit {
   onCreateParentCategory(){
     debugger;
   
-      this.masterService.createParentCategory(this.getAllParentCategory).subscribe(
+      this.masterService.createParentCategory(this.createCategory).subscribe(
         (res:any)=>{
           if(res.result){
             console.log(res);
@@ -104,11 +104,11 @@ export class ParentcategoryComponent implements OnInit {
  
   }
 
-  onDeleteParentCategory(deptIds:number){
+  onDeleteParentCategory(categoryId:number){
     debugger;
-    console.log("deptIds===",deptIds)
+    console.log("categoryId===",categoryId)
 if(confirm("are you sure you want to delete?")){
-  this.masterService.deleteParentCategory(deptIds).subscribe(
+  this.masterService.deleteParentCategory(categoryId).subscribe(
     (res:any)=>{
       if(res.result){
         console.log(res);
