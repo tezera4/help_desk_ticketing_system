@@ -18,6 +18,8 @@ export class EmployeeComponent implements OnInit {
 
     this.loadDepartment();
   }
+  isNewView:boolean=true;
+  role:any[]=['Employee','admin'];
   allEmployeesModel: AllEmployeesModel = {
     message: '',
     result: false,
@@ -63,7 +65,7 @@ export class EmployeeComponent implements OnInit {
 
   loadEmployees() {
     this.masterService.getAllEmployees().subscribe((res: any) => {
-      debugger;
+      // debugger;
       if (res.result) {
         this.allEmployeesModel = res;
       } else {
@@ -81,7 +83,7 @@ export class EmployeeComponent implements OnInit {
     });
   }
   onCreateEmployee() {
-    debugger;
+    // debugger;
     this.masterService
       .createEmployee(this.createEmployeeModel)
       .subscribe((res: any) => {
@@ -96,7 +98,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   onDeleteEmployee(employeeId: number) {
-    debugger;
+    // debugger;
     console.log('employeeId===', employeeId);
     if (confirm('are you sure you want to delete?')) {
       this.masterService.deleteEmployee(employeeId).subscribe((res: any) => {
@@ -114,7 +116,7 @@ export class EmployeeComponent implements OnInit {
     this.masterService
       .updateEmployee(this.createEmployeeModel)
       .subscribe((res: any) => {
-        debugger;
+        // debugger;
         if (res.result) {
           console.log(res);
           alert('Employee is updated successfully');
@@ -129,6 +131,6 @@ export class EmployeeComponent implements OnInit {
     // console.log("parentCategoryId===",parentCategorys.categoryId);
     this.createEmployeeModel = employeeFromComponent;
     // console.log("deptIds===",parentCategorys.categoryId);
-    debugger;
+    // debugger;
   }
 }

@@ -6,6 +6,7 @@ import { GetAllParentCategory } from '../model/get-all-parent-category';
 import { CreateCategory } from '../model/create-category';
 import { CreateChildCategoryModel } from '../model/create-child-category-model';
 import { CreateEmployeeModel } from '../model/create-employee-model';
+import { CreateNewTicketModel } from '../model/create-new-ticket-model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,8 @@ export class MasterService {
     // .set("Access-Control-Allow-Origin","*")
     // .set("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT")
     // .set("Access-Control-Allow-Headers", "Content-Type,X-Auth_Token,Origin,Authorization");
-    // debugger;
-   return this.http.post("/api/Tickets/login",loginRequest);
+    debugger;
+   return this.http.post("/api/TicketsNew/login",loginRequest);
   }
   
 
@@ -119,5 +120,14 @@ export class MasterService {
   {
    
     return this.http.put("/api/TicketsNew/UpdateEmployee",updateEmployee);
+  }
+
+  getChildCategoryByParentId(parentId:string)
+  {
+    return this.http.get("/api/TicketsNew/GetChildCategoryByParentId?id="+parentId);
+  }
+  saveNewTicket(createNewTIcket:CreateNewTicketModel)
+  {
+    return this.http.post("/api/TicketsNew/CreateNewTicket",createNewTIcket);
   }
 }

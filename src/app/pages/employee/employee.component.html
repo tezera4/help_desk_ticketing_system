@@ -1,163 +1,207 @@
 <div class="row">
-  <div class="col-8">
-    <div class="card">
-      <div class="card-header bg-success">Employee List</div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-12">
-            <table class="table table-bordered">
-              <thead>
-                <tr class="text-center">
-                  <th>Sr no</th>
-                  <th>Employee Name</th>
-                  <th>Department</th>
-                  <th>Contact Number</th>
-                  <th>email</th>
-                  <th>role</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                @for (item of allEmployeesModel.data; track $index) {
-                <tr>
-                  <td>{{ $index + 1 }}</td>
-                  <td>{{ item.employeeName }}</td>
-                  <td>{{ item.deptName }}</td>
-                  <td>{{ item.contactNo }}</td>
-                  <td>{{ item.emailId }}</td>
-                  <td>{{ item.role }}</td>
-                  <td class="text-center">
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      (click)="OnUpdate(item)"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-danger mx-2"
-                      (click)="onDeleteEmployee(item.employeeId)"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                }
-              </tbody>
-            </table>
+  @if(isNewView){
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header bg-success">
+          <div class="row">
+            <div class="col-6">
+              Employee List
+            </div>
+            <div class="col-6 text-end">
+              <button class=" col-6 btn btn-warning" (click)="isNewView=!isNewView">Add New</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <table class="table table-bordered">
+                <thead>
+                  <tr class="text-center">
+                    <th>Sr no</th>
+                    <th>Employee Name</th>
+                    <th>Department</th>
+                    <th>Contact Number</th>
+                    <th>email</th>
+                    <th>role</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (item of allEmployeesModel.data; track $index) {
+                  <tr>
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ item.employeeName }}</td>
+                    <td>{{ item.deptName }}</td>
+                    <td>{{ item.contactNo }}</td>
+                    <td>{{ item.emailId }}</td>
+                    <td>{{ item.role }}</td>
+                    <td class="text-center">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="OnUpdate(item)"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-danger mx-2"
+                        (click)="onDeleteEmployee(item.employeeId)"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-4">
-    <div class="card">
-      <div class="card-header bg-success">New Employee</div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-12">
-            <label for="">Employee Name</label>
-            <input
-              type="text"
-              name="employeeName"
-              [(ngModel)]="createEmployeeModel.employeeName"
-              class="form-control"
-            />
+  }@else {
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header bg-success">
+          <div class="row">
+            <div class="col-6">
+              New Employee
+            </div>
+            <div class="col-6 text-end">
+              <button class=" col-6 btn  btn-warning" (click)="isNewView=!isNewView">Go To List</button>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <label for="">Employee Contact Number</label>
-            <input
-              type="text"
-              name="contactNo"
-              [(ngModel)]="createEmployeeModel.contactNo"
-              class="form-control"
-            />
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <label for="">Employee email</label>
-            <input
-              type="text"
-              name="emailId"
-              [(ngModel)]="createEmployeeModel.emailId"
-              class="form-control"
-            />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <label for="">Employee Gender</label>
-            <input
-              type="text"
-              name="gender"
-              [(ngModel)]="createEmployeeModel.gender"
-              class="form-control"
-            />
-          </div>
-        </div>
-        <div class="row">
+        <div class="card-body">
+          <div class="row">
             <div class="col-12">
-              <label for="">Employee Role</label>
+              <label for="">Employee Name</label>
               <input
                 type="text"
-                name="role"
-                [(ngModel)]="createEmployeeModel.role"
+                name="employeeName"
+                [(ngModel)]="createEmployeeModel.employeeName"
                 class="form-control"
               />
             </div>
           </div>
-        <div class="row">
-          <div class="col-12">
-            <label for="">password</label>
-            <input
-              type="text"
-              name="password"
-              [(ngModel)]="createEmployeeModel.password"
-              class="form-control"
-            />
+          <div class="row">
+            <div class="col-6">
+              <label for="">Contact Number</label>
+              <input
+                type="text"
+                name="contactNo"
+                [(ngModel)]="createEmployeeModel.contactNo"
+                class="form-control"
+              />
+            </div>
+            <div class="col-6">
+              <label for=""> email</label>
+              <input
+                type="text"
+                name="emailId"
+                [(ngModel)]="createEmployeeModel.emailId"
+                class="form-control"
+              />
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <label for="">Employee Department</label>
-            <select
-              [(ngModel)]="createEmployeeModel.deptId"
-              class="form-select"
-            >
-              <option value="">Select Parent Department</option>
-              @for (item of allDept.data; track $index) {
-              <option value="{{ item.deptId }}">{{ item.deptName }}</option>
-
+          
+         
+          <div class="row">
+            <div class="col-6">
+              <label for="">Employee Department</label>
+              <select
+                [(ngModel)]="createEmployeeModel.deptId"
+                class="form-select"
+              >
+                <option value="">Select Parent Department</option>
+                @for (item of allDept.data; track $index) {
+                <option value="{{ item.deptId }}">{{ item.deptName }}</option>
+  
+                }
+              </select>
+            </div>
+              <div class="col-6">
+                <label for="">Employee Role</label>
+               
+                <select
+                [(ngModel)]="createEmployeeModel.role"
+                class="form-select"
+              >
+                <option value="">Select Parent Role</option>
+                @for (item of role; track $index) {
+                <option value="{{ item }}">{{ item }}</option>
+  
+                }
+              </select>
+              </div>
+            </div>
+          <div class="row">
+            <div class="col-6">
+              <label for="gender">Gender</label>
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                [(ngModel)]="createEmployeeModel.gender"
+               
+              />female
+              <input
+              type="radio"
+              name="gender"
+              value="male"
+              [(ngModel)]="createEmployeeModel.gender"
+             
+            />male
+            </div>
+            <div class="col-6">
+              <label for="">password</label>
+              <input
+                type="text"
+                name="password"
+                [(ngModel)]="createEmployeeModel.password"
+                class="form-control"
+              />
+            </div>
+          </div>
+          
+          <div class="row pt-3">
+            <div class="col-6">
+              <button
+                type="button"
+                class="btn btn-secondary text-center"
+              >
+                reset
+              </button>
+            </div>
+            <div class="col-6 ">
+              
+              @if (createEmployeeModel.employeeId==0) {
+                
+              <button
+                type="button"
+                class="btn btn-success text-end"
+                (click)="onCreateEmployee()"
+              >
+                Save
+              </button>
+              }@else {
+              <button
+                type="button"
+                class="btn btn-success text-center"
+                (click)="UpdateEmployee()"
+              >
+                Update Department
+              </button>
               }
-            </select>
-          </div>
-        </div>
-        <div class="row pt-3">
-          <div class="col-6">
-            @if (createEmployeeModel.employeeId==0) {
-            <button
-              type="button"
-              class="btn btn-success text-center"
-              (click)="onCreateEmployee()"
-            >
-              Save
-            </button>
-            }@else {
-            <button
-              type="button"
-              class="btn btn-success text-center"
-              (click)="UpdateEmployee()"
-            >
-              Update Department
-            </button>
-            }
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+
+  }
+  
+ 
 </div>
