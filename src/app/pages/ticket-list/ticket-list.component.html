@@ -1,1 +1,104 @@
-<p>ticket-list works!</p>
+
+<div class="row">
+  <div class="col-12 text-center" >
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" (click)="ChangeMode('my ticket')" [class]="mode == 'my ticket' ? 'btn btn-success':'btn btn-btn-primary'">My Ticket</button>
+      <button type="button" (click)="ChangeMode('assigned ticket')" [class]="mode == 'assigned ticket' ? 'btn btn-success':'btn btn-btn-primary'">Assigned Ticket</button>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    @if(mode=='my ticket'){
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Ticket No</th>
+          <th>Department</th>       
+          <th>Created by</th>
+          <th> Contact No</th>
+          <th>Created Date</th>
+          <th>Status</th>
+          <th>Assigned to </th>
+          <th>Category</th>
+          <th>Sub Category</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          @if ( allTicketCreatedByEmpIdList.data!==null && allTicketCreatedByEmpIdList.data!==undefined) {
+            @for (item of  allTicketCreatedByEmpIdList.data; track $index) {
+              <td>{{item.ticketId}}</td>
+              <td>{{item.deptName}}</td>
+              <td>{{item.createdByEmployee}}</td>
+              <td>{{item.contactNo}}</td>
+              <td>{{item.createdDate}}</td>
+              <td>{{item.state}}</td>
+              <td>{{item.assignedToEmployee}}</td>
+              <td>{{item.parentCategory}}</td>
+              <td>{{item.childCategory}}</td> 
+            }
+  
+          }
+          
+         
+        </tr>
+        </tbody>
+      </table>
+    }@else {
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+             
+          <th>ticketId</th>
+          <th>childCategroyName</th>
+          <th>completedDate</th>
+          <th>createdDate</th>
+          <th>employeeId</th>
+          <th>employeeName</th>
+          <th>expectedEndDate</th>
+          <th>parentCategoryName</th>
+          <th>requestDetails</th>
+          <th>severity</th>
+          <th>state</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        
+          @if ( allTicketAssignedTologgedInEmpList.data!==null && allTicketAssignedTologgedInEmpList.data!==undefined) {
+            @for (item of  allTicketAssignedTologgedInEmpList.data; track $index) {
+              <tr>
+              <td>{{item.ticketId}}</td>
+              <td>{{item.childCategroyName}}</td>
+              <td>{{item.completedDate}}</td>
+              <td>{{item.createdDate}}</td>
+              <td>{{item.employeeId}}</td>
+              <td>{{item.employeeName}}</td>
+              <td>{{item.expectedEndDate}}</td>
+              <td>{{item.parentCategoryName}}</td> 
+              <td>{{item.requestDetails}}</td> 
+              <td>{{item.severity}}</td> 
+              <td>{{item.state}}</td> 
+              <td>
+                @if(item.state=='Assigned'){<button class="btn btn-success">Start Ticket</button>}
+                @else if (item.state=='In-Progress') {<button class="btn btn-success">Close Ticket</button>}
+              </td>
+             
+              
+                
+              
+            </tr>
+            }
+  
+          }
+          
+         
+      
+        </tbody>
+      </table>
+    }
+
+  </div>
+</div>

@@ -15,6 +15,7 @@ export class MasterService {
   apiURL:string='https://freeapi.miniprojectideas.com/api/Tickets/';
 
   constructor(private http:HttpClient) { }
+  loginUserId:number=0;
   login(loginRequest:LoginRequest)
   {
     // let headers = new HttpHeaders()
@@ -126,8 +127,5 @@ export class MasterService {
   {
     return this.http.get("/api/TicketsNew/GetChildCategoryByParentId?id="+parentId);
   }
-  saveNewTicket(createNewTIcket:CreateNewTicketModel)
-  {
-    return this.http.post("/api/TicketsNew/CreateNewTicket",createNewTIcket);
-  }
+ 
 }
