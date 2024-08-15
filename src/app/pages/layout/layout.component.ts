@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { NavigationComponent } from "../../navigation/navigation.component";
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, NavigationComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
 })

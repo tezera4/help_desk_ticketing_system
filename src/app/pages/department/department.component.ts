@@ -1,15 +1,34 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MasterService } from '../../service/master.service';
 import { GetAllDepartment } from '../../model/getAllDepartment';
-import { DatePipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 import { CreateDepartment } from '../../model/create-department';
 import { FormsModule } from '@angular/forms';
-import { error } from 'console';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import {MatMenuModule} from '@angular/material/menu';
 
 @Component({
   selector: 'app-department',
   standalone: true,
-  imports: [DatePipe, FormsModule],
+  imports: [DatePipe, FormsModule,MatSlideToggleModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    AsyncPipe,
+    RouterLink,
+    RouterOutlet,
+    MatButtonModule, 
+    MatMenuModule,
+    MatIconModule
+  ],
   templateUrl: './department.component.html',
   styleUrl: './department.component.css'
 })

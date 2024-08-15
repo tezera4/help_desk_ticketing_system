@@ -1,0 +1,27 @@
+/* .sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+} */
+
+.example-container {
+  width: auto;
+  height: 200px;
+  margin: 10px;
+  border: 1px solid #555;
+  /* The background property is added to clearly distinguish the borders between drawer and main
+     content */
+  background: #eee;
+}

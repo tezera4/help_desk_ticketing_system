@@ -1,0 +1,58 @@
+<!-- <mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="department">Department</a>
+      <a mat-list-item routerLink="parent-category">parent Category</a>
+      <a mat-list-item routerLink="child-category">child Category</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      @if (isHandset$ | async) {
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      }
+      <span>Help Desk Ticketing System</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+ -->
+
+<mat-toolbar color="primary" class="mat-elevation-z8">
+<button mat-icon-button>
+  <mat-icon>menu</mat-icon>
+
+</button>
+<span>Material UI tutorial</span>
+<button mat-button routerLink="">Home</button>
+<button [matMenuTriggerFor]="lvl1master" mat-button>Master</button>
+<mat-menu #lvl1master="matMenu">
+  <button [matMenuTriggerFor]="company" mat-button>Campany</button>
+  <button [matMenuTriggerFor]="customer" mat-button>Customer</button>
+  <button [matMenuTriggerFor]="product" mat-button>Product</button>
+</mat-menu>
+<mat-menu #company="matMenu">
+<button mat-menu-item>Term</button>
+<button mat-menu-item>Tax</button>
+</mat-menu>
+<mat-menu #customer="matMenu">
+  <button mat-menu-item>Term</button>
+  <button mat-menu-item>Tax</button>
+  </mat-menu>
+  <mat-menu #product="matMenu">
+    <button mat-menu-item>Term</button>
+    <button mat-menu-item>Tax</button>
+    </mat-menu>
+</mat-toolbar>
+
